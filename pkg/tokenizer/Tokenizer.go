@@ -1,3 +1,7 @@
+// Tokeniser is an unitilty package which used in parsers to build AST.
+// Main aim of tokeniser to scan inpurt string for validity of all characters and
+// group them by type in high level entities.
+
 package tokenizer
 
 import (
@@ -57,6 +61,8 @@ func (this *Tokenizer) isSpace() bool {
 	return unicode.IsSpace(this.peekRune()) && this.peekRune() != '\n'
 }
 
+// String function build a debug string with indexes, names and values of all
+// tokens
 func (this *Tokenizer) String() string {
 	var result string
 	for i := 0; i < len(this.tokens); i++ {
@@ -76,6 +82,7 @@ func (this *Tokenizer) String() string {
 	return result
 }
 
+// New function creates a tokenizer struct by the input string.
 func New(input string) Tokenizer {
 	var result Tokenizer
 	result.source = []rune(input)
